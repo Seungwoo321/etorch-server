@@ -2,7 +2,6 @@ import Koa from 'koa'
 import cors from '@koa/cors'
 import bodyParser  from 'koa-bodyparser'
 import Router from '@koa/router';
-
 const app = new Koa();
 const router = new Router();
 

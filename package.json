@@ -18,6 +18,7 @@
     "dotenv": "^16.4.4",
     "koa": "^2.15.0",
     "koa-bodyparser": "^4.4.1",
+    "mariadb": "^3.2.3",
     "sequelize": "^6.37.1",
     "ts-node-dev": "^2.0.0"
   },
