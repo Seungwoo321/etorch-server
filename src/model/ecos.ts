@@ -20,20 +20,23 @@ export class Ecos extends Model<InferAttributes<Ecos>, InferCreationAttributes<E
 
 Ecos.init({
   stat_code: {
-    type: DataTypes.STRING(50)
+    type: DataTypes.STRING(50),
+    primaryKey: true
   },
   stat_name: {
     type: DataTypes.STRING(100)
   },
   item_code1: {
-    type: DataTypes.STRING(50)
+    type: DataTypes.STRING(50),
+    primaryKey: true
   },
   item_name1: {
     type: DataTypes.STRING(100)
   },
   item_code2: {
     type: DataTypes.STRING(50),
-    allowNull: true
+    primaryKey: true,
+    allowNull: true,
   },
   item_name2: {
     type: DataTypes.STRING(100),
@@ -41,6 +44,7 @@ Ecos.init({
   },
   item_code3: {
     type: DataTypes.STRING(50),
+    primaryKey: true,
     allowNull: true
   },
   item_name3: {
@@ -49,6 +53,7 @@ Ecos.init({
   },
   item_code4: {
     type: DataTypes.STRING(50),
+    primaryKey: true,
     allowNull: true
   },
   item_name4: {
@@ -68,7 +73,8 @@ Ecos.init({
     type: DataTypes.STRING(20)
   }
 }, {
-  ...options
+  ...options,
+  modelName: 'ecos'
 })
 
 

@@ -1,5 +1,5 @@
-import { DataTypes, Sequelize, Model, InferAttributes, InferCreationAttributes } from 'sequelize'
-import { sequelize, options } from '../utils'
+import { DataTypes, Model, InferAttributes, InferCreationAttributes } from 'sequelize'
+import { options } from '../utils'
 
 export class Indicator extends Model<InferAttributes<Indicator>, InferCreationAttributes<Indicator>> {
   id: number;
@@ -44,4 +44,7 @@ Indicator.init({
   time_unit: {
     type: DataTypes.STRING(100)
   }
-}, { sequelize })
+}, {
+  ...options,
+  modelName: 'indicator'
+})

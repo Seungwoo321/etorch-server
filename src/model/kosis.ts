@@ -2,55 +2,55 @@ import { DataTypes, Model, InferAttributes, InferCreationAttributes } from 'sequ
 import { options } from '../utils'
 
 export class Kosis extends Model<InferAttributes<Kosis>, InferCreationAttributes<Kosis>> {
-  TBL_NM: string;
-  PRD_DE: string;
-  TBL_ID: string;
-  ITM_NM: string;
-  ITM_NM_ENG: string;
-  ITM_ID: string;
-  ORG_ID: string;
-  C1_OBJ_NM: string;
-  C1_OBJ_NM_ENG: string;
-  C2_OBJ_NM: string;
-  C2_OBJ_NM_ENG: string;
-  C3_OBJ_NM: string;
-  C3_OBJ_NM_ENG: string;
-  C4_OBJ_NM: string;
-  C4_OBJ_NM_ENG: string;
-  C5_OBJ_NM: string;
-  C5_OBJ_NM_ENG: string;
-  C6_OBJ_NM: string;
-  C6_OBJ_NM_ENG: string;
-  C7_OBJ_NM: string;
-  C7_OBJ_NM_ENG: string;
-  C8_OBJ_NM: string;
-  C8_OBJ_NM_ENG: string;
-  DT: string;
-  PRD_SE: string;
-  C1: string;
-  C1_NM: string;
-  C1_NM_ENG: string;
-  C2: string;
-  C2_NM: string;
-  C2_NM_ENG: string;
-  C3: string;
-  C3_NM: string;
-  C3_NM_ENG: string;
-  C4: string;
-  C4_NM: string;
-  C4_NM_ENG: string;
-  C5: string;
-  C5_NM: string;
-  C5_NM_ENG: string;
-  C6: string;
-  C6_NM: string;
-  C6_NM_ENG: string;
-  C7: string;
-  C7_NM: string;
-  C7_NM_ENG: string;
-  C8: string;
-  C8_NM: string;
-  C8_NM_ENG: string;
+  tbl_nm: string;
+  prd_de: string;
+  tbl_id: string;
+  itm_nm: string;
+  itm_nm_eng: string;
+  itm_id: string;
+  org_id: string;
+  c1_obj_nm: string;
+  c1_obj_nm_eng: string;
+  c2_obj_nm: string;
+  c2_obj_nm_eng: string;
+  c3_obj_nm: string;
+  c3_obj_nm_eng: string;
+  c4_obj_nm: string;
+  c4_obj_nm_eng: string;
+  c5_obj_nm: string;
+  c5_obj_nm_eng: string;
+  c6_obj_nm: string;
+  c6_obj_nm_eng: string;
+  c7_obj_nm: string;
+  c7_obj_nm_eng: string;
+  c8_obj_nm: string;
+  c8_obj_nm_eng: string;
+  dt: string;
+  prd_se: string;
+  c1: string;
+  c1_nm: string;
+  c1_nm_eng: string;
+  c2: string;
+  c2_nm: string;
+  c2_nm_eng: string;
+  c3: string;
+  c3_nm: string;
+  c3_nm_eng: string;
+  c4: string;
+  c4_nm: string;
+  c4_nm_eng: string;
+  c5: string;
+  c5_nm: string;
+  c5_nm_eng: string;
+  c6: string;
+  c6_nm: string;
+  c6_nm_eng: string;
+  c7: string;
+  c7_nm: string;
+  c7_nm_eng: string;
+  c8: string;
+  c8_nm: string;
+  c8_nm_eng: string;
 }
 /**
 C1_OBJ_NM ~ C8_OBJ_NM	분류명1 ~ 분류명8
@@ -59,190 +59,191 @@ C1_NM ~ C8_NM	분류값 명1 ~ 분류값 명8
 C1_NM_ENG ~ C8_NM_ENG
  */
 Kosis.init({
-  TBL_NM: {
+  tbl_nm: {
     type: DataTypes.STRING(100)
   },
-  PRD_DE: {
+  prd_de: {
     type: DataTypes.STRING(20)
   },
-  TBL_ID: {
+  tbl_id: {
     type: DataTypes.STRING(100)
   },
-  ITM_NM: {
+  itm_nm: {
     type: DataTypes.STRING(100)
   },
-  ITM_NM_ENG: {
+  itm_nm_eng: {
     type: DataTypes.STRING(100)
   },
-  ITM_ID: {
+  itm_id: {
     type: DataTypes.STRING(100)
   },
-  ORG_ID: {
+  org_id: {
     type: DataTypes.STRING(20)
   },
-  C1_OBJ_NM: {
+  c1_obj_nm: {
     type: DataTypes.STRING(100)
   },
-  C1_OBJ_NM_ENG: {
+  c1_obj_nm_eng: {
     type: DataTypes.STRING(100)
   },
-  C2_OBJ_NM: {
+  c2_obj_nm: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C2_OBJ_NM_ENG: {
+  c2_obj_nm_eng: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C3_OBJ_NM: {
+  c3_obj_nm: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C3_OBJ_NM_ENG: {
+  c3_obj_nm_eng: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C4_OBJ_NM: {
+  c4_obj_nm: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C4_OBJ_NM_ENG: {
+  c4_obj_nm_eng: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C5_OBJ_NM: {
+  c5_obj_nm: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C5_OBJ_NM_ENG: {
+  c5_obj_nm_eng: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C6_OBJ_NM: {
+  c6_obj_nm: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C6_OBJ_NM_ENG: {
+  c6_obj_nm_eng: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C7_OBJ_NM: {
+  c7_obj_nm: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C7_OBJ_NM_ENG: {
+  c7_obj_nm_eng: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C8_OBJ_NM: {
+  c8_obj_nm: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C8_OBJ_NM_ENG: {
+  c8_obj_nm_eng: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  DT: {
+  dt: {
     type: DataTypes.STRING(20)
   },
-  PRD_SE: {
+  prd_se: {
     type: DataTypes.STRING(20)
   },
-  C1: {
+  c1: {
     type: DataTypes.STRING(100)
   },
-  C1_NM: {
+  c1_nm: {
     type: DataTypes.STRING(100)
   },
-  C1_NM_ENG: {
+  c1_nm_eng: {
     type: DataTypes.STRING(100)
   },
-  C2: {
+  c2: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C2_NM: {
+  c2_nm: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C2_NM_ENG: {
+  c2_nm_eng: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C3: {
+  c3: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C3_NM: {
+  c3_nm: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C3_NM_ENG: {
+  c3_nm_eng: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C4: {
+  c4: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C4_NM: {
+  c4_nm: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C4_NM_ENG: {
+  c4_nm_eng: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C5: {
+  c5: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C5_NM: {
+  c5_nm: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C5_NM_ENG: {
+  c5_nm_eng: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C6: {
+  c6: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C6_NM: {
+  c6_nm: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C6_NM_ENG: {
+  c6_nm_eng: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C7: {
+  c7: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C7_NM: {
+  c7_nm: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C7_NM_ENG: {
+  c7_nm_eng: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C8: {
+  c8: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C8_NM: {
+  c8_nm: {
     type: DataTypes.STRING(100),
     allowNull: true
   },
-  C8_NM_ENG: {
+  c8_nm_eng: {
     type: DataTypes.STRING(100),
     allowNull: true
   }  
 }, {
-  ...options
+  ...options,
+  modelName: 'kosis'
 })
 
 /**

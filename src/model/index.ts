@@ -5,10 +5,10 @@ export { Ecos } from './ecos'
 export { Kosis } from './kosis'
 export { OECD } from './oecd'
 
-// (async () => {
-//   console.log(1)
-//   const synced = await sequelize.sync({ force: true, alter: true });
-//   console.log(synced)
-// })();
+(async () => {
+  console.log(1)
+  const synced = await sequelize.sync({ force: true, alter: true });
+  console.log(synced)
+})();
 
-sequelize.sync({ force: true, alter: true });
+// sequelize.sync({ force: true, alter: true });

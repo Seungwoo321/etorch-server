@@ -2,61 +2,62 @@ import { DataTypes, Model, InferAttributes, InferCreationAttributes } from 'sequ
 import { options } from '../utils'
 
 export class OECD extends Model<InferAttributes<OECD>, InferCreationAttributes<OECD>> {
-  REF_AREA: string;
+  ref_area: string;
   value: number;
-  FREQ: string;
-  MEASURE: string;
-  UNIT_MEASURE: string;
-  ACTIVITY: string;
-  ADJUSTMENT: string;
-  TRANSFORMATION: string;
-  TIME_HORIZ: string;
-  METHODOLOGY: string;
-  TIME_PERIOD: string;
+  freq: string;
+  measure: string;
+  unit_measure: string;
+  activity: string;
+  adjustment: string;
+  transformation: string;
+  time_horiz: string;
+  methodology: string;
+  time_period: string;
 }
 
 OECD.init({
-  REF_AREA: {
+  ref_area: {
     type: DataTypes.STRING(50)
   },
   value: {
     type: DataTypes.FLOAT
   },
-  FREQ: {
+  freq: {
     type: DataTypes.STRING(50)
   },
-  MEASURE: {
+  measure: {
     type: DataTypes.STRING(100)
   },
-  UNIT_MEASURE: {
+  unit_measure: {
     type: DataTypes.STRING(50)
   },
-  ACTIVITY: {
+  activity: {
     type: DataTypes.STRING(50),
     allowNull: true
   },
-  ADJUSTMENT: {
+  adjustment: {
     type: DataTypes.STRING(50),
     allowNull: true
   },
-  TRANSFORMATION: {
+  transformation: {
     type: DataTypes.STRING(50),
     allowNull: true
   },
-  TIME_HORIZ: {
+  time_horiz: {
     type: DataTypes.STRING(50),
     allowNull: true
   },
-  METHODOLOGY: {
+  methodology: {
     type: DataTypes.STRING(50),
     allowNull: true
   },
-  TIME_PERIOD: {
+  time_period: {
     type: DataTypes.STRING(50),
     allowNull: true
   }
 }, {
-  ...options
+  ...options,
+  modelName: 'oecd'
 })
 
 /**
