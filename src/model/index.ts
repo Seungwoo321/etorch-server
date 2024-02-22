@@ -6,9 +6,11 @@ export { Kosis } from './kosis'
 export { OECD } from './oecd'
 
 (async () => {
-  console.log(1)
-  const synced = await sequelize.sync({ force: true, alter: true });
-  console.log(synced)
+  try {
+    await sequelize.sync({ force: true, alter: true });
+    console.log('SUCCESS')
+  } catch (error) {
+    console.log(error) 
+  }
 })();
 
-// sequelize.sync({ force: true, alter: true });
