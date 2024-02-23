@@ -13,4 +13,3 @@ export { OECD } from './oecd'
     console.log(error) 
   }
 })();
-

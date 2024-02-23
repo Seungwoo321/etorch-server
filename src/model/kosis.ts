@@ -60,190 +60,173 @@ C1_NM_ENG ~ C8_NM_ENG
  */
 Kosis.init({
   tbl_nm: {
-    type: DataTypes.STRING(100)
+    type: DataTypes.STRING(100),
+    allowNull: false
   },
   prd_de: {
-    type: DataTypes.STRING(20)
+    type: DataTypes.STRING(20),
+    allowNull: false
   },
   tbl_id: {
-    type: DataTypes.STRING(100)
+    type: DataTypes.STRING(100),
+    allowNull: false
   },
   itm_nm: {
-    type: DataTypes.STRING(100)
+    type: DataTypes.STRING(100),
+    allowNull: false
   },
   itm_nm_eng: {
-    type: DataTypes.STRING(100)
+    type: DataTypes.STRING(100),
+    allowNull: false
   },
   itm_id: {
-    type: DataTypes.STRING(100)
+    type: DataTypes.STRING(100),
+    allowNull: false
   },
   org_id: {
-    type: DataTypes.STRING(20)
+    type: DataTypes.STRING(20),
+    allowNull: false
   },
   c1_obj_nm: {
-    type: DataTypes.STRING(100)
+    type: DataTypes.STRING(100),
+    allowNull: false
   },
   c1_obj_nm_eng: {
-    type: DataTypes.STRING(100)
+    type: DataTypes.STRING(100),
+    allowNull: false
   },
   c2_obj_nm: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c2_obj_nm_eng: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c3_obj_nm: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c3_obj_nm_eng: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c4_obj_nm: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c4_obj_nm_eng: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c5_obj_nm: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c5_obj_nm_eng: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c6_obj_nm: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c6_obj_nm_eng: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c7_obj_nm: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c7_obj_nm_eng: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c8_obj_nm: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c8_obj_nm_eng: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   dt: {
-    type: DataTypes.STRING(20)
+    type: DataTypes.STRING(20),
+    allowNull: false
   },
   prd_se: {
-    type: DataTypes.STRING(20)
+    type: DataTypes.STRING(20),
+    allowNull: false
   },
   c1: {
-    type: DataTypes.STRING(100)
+    type: DataTypes.STRING(100),
+    allowNull: false
   },
   c1_nm: {
-    type: DataTypes.STRING(100)
+    type: DataTypes.STRING(100),
+    allowNull: false
   },
   c1_nm_eng: {
-    type: DataTypes.STRING(100)
+    type: DataTypes.STRING(100),
+    allowNull: false
   },
   c2: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c2_nm: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c2_nm_eng: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c3: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c3_nm: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c3_nm_eng: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c4: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c4_nm: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c4_nm_eng: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c5: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c5_nm: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c5_nm_eng: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c6: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c6_nm: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c6_nm_eng: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c7: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c7_nm: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c7_nm_eng: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c8: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c8_nm: {
     type: DataTypes.STRING(100),
-    allowNull: true
   },
   c8_nm_eng: {
     type: DataTypes.STRING(100),
-    allowNull: true
   }  
 }, {
   ...options,
   modelName: 'kosis'
+})
+
+Kosis.afterBulkCreate('kosis', function (instances, options) {
+  console.log('afterBulkCreate')
 })
 
 /**
