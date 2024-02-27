@@ -1,5 +1,5 @@
 import { DataTypes, Model, InferAttributes, InferCreationAttributes } from 'sequelize'
-import { options } from '../utils'
+import { options } from '../db'
 
 export class Indicator extends Model<InferAttributes<Indicator>, InferCreationAttributes<Indicator>> {
   id: number;

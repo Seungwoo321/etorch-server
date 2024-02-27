@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize'
-import { config } from './config'
+import { config } from './env'
 
 const { MARIADB_HOST, MARIADB_DATABASE, MARIADB_USERNAME, MARIADB_PASSWORD } = config
 

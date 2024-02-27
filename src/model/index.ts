@@ -1,5 +1,4 @@
-import { sequelize } from '../utils';
-// const sequelize = new Sequelize('mysql://root:asd123@localhost:3306/mydb');
+import { sequelize } from '../db';
 export { Indicator } from './indicator';
 export { Ecos } from './ecos'
 export { Kosis } from './kosis'

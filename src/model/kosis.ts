@@ -1,5 +1,5 @@
 import { DataTypes, Model, InferAttributes, InferCreationAttributes } from 'sequelize'
-import { options } from '../utils'
+import { options } from '../db'
 
 export class Kosis extends Model<InferAttributes<Kosis>, InferCreationAttributes<Kosis>> {
   tbl_nm: string;

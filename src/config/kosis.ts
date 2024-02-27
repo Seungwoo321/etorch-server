@@ -131,7 +131,7 @@ const GDPD_CR_YoY_V = {
   objL1: '13102134475ACC_ITEM.301'
 }
 
-const options = {
+const config = {
   yearly: [
     NGDP_KRW,
     NGDP_USD,
@@ -154,4 +154,4 @@ const options = {
   ]
 }
 
-export default options
+export default config

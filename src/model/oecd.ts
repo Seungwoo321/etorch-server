@@ -1,5 +1,5 @@
 import { DataTypes, Model, InferAttributes, InferCreationAttributes } from 'sequelize'
-import { options } from '../utils'
+import { options } from '../db'
 
 export class OECD extends Model<InferAttributes<OECD>, InferCreationAttributes<OECD>> {
   ref_area: string;

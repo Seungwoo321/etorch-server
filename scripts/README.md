@@ -26,7 +26,7 @@ GDP 디플레이터(2015=100) 등락률(%)|GDPD_B2015_CR|A|
 시장금리 국고채 (1년)           |Bond_Yield_1yr|D,M,Q,A|
 시장금리 국고채 (3년)           |Bond_Yield_3yr|D,M,Q,A|
 시장금리 국고채 (10년)          |Bond_Yield_10yr|D,M,Q,A|
-회사채수익률 (AA-)              |C-Bond Yield_AA-|D,M,Q,A|
+회사채수익률 (AA-)              |C_Bond_Yield_AA_|D,M,Q,A|
 한국은행 기준금리               |BOK_RATE|M,D|
 국내총생산(GDP)(계절조정, 명목) |NGDP_SA|Q|
 국내총생산(GDP)(계절조정, 실질) |RGDP_SA|Q|
@@ -41,9 +41,24 @@ GDP 디플레이터(2015=100) 등락률(%) | GDPD_B2015_CR |A|
 국내총생산(GDP)(명목, 원화표시)(십억원) | NGDP_KRW |A|
 국내총생산(GDP)(명목, 달러표시)(억달러) | NGDP_USD  |A|
 경제성장률(실질성장률)(%) | GDP_RGR|A|
-원/미국달러(매매기준율) | KRW_USD | D |
-원/위안(매매기준율) | KRW_CNY | D |
-원/일본엔(100엔) | KRW_JPY | D |
+원/미국달러(매매기준율)(일별) | KRW_USD_D |D|
+원/위안(매매기준율)(일별) | KRW_CNY_D |D|
+원/일본엔(100엔)(일별) | KRW_JPY_D |D|
+원/미국달러(매매기준율)(월별) | KRW_USD_M |M|
+원/위안(매매기준율)(월별) | KRW_CNY_M |M|
+원/일본엔(100엔)(월별) | KRW_JPY_M |M|
+원유-WTI |CrudeOil |M|
+장기금리(IRLT)|IRLT |M|
+단기금리(IR3TIP)|IR3TIP|M|
+M2(평잔, 원계열) | M2_AVG_V |M|
+현금통화(단기부동자금) | CURRENCY |M|
+요구불예금(단기부동자금) | DEMAND_DEPOSITS |M|
+수시입출식저축성예금(단기부동자금) | SAVINGS_ACCOUNT_DEPOSITS |M|
+MMF(단기부동자금) | MMF |M|
+양도서예금증서(단기부동자금) | NCD |M|
+CMA(단기부동자금) | CMA |M|
+환매조건부채권매도(단기부동자금) | REPO |M|
+Lf | Lf |M|
 
 ## 코드 약어
 

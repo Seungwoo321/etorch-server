@@ -1,14 +1,13 @@
-import { sequelize } from '../../utils'
-import { Kosis } from '../../model/kosis'
+import { Ecos, Kosis } from '../model'
 import { kosis } from 'eidl'
-import kosisOptions from './options/kosis'
+import kosisConfig from '../config/kosis'
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 const getPeriodDate = ({ prdSe, startPrdDe, endPrdDe }) => {
   const startYear = startPrdDe.substring(0, 4)
   const endYear = endPrdDe.substring(0, 4)
-  const monthEnd = prdSe === 'M' ? '12' : '04'
+  const strEnd = prdSe === 'M' ? '12' : '04'
   const list = []
   if (startYear === endYear) {
     list.push([startPrdDe, endPrdDe])
@@ -16,11 +15,11 @@ const getPeriodDate = ({ prdSe, startPrdDe, endPrdDe }) => {
   }
   for (let year = startYear; year <= endYear; year ++) {
     if (year.toString() === startYear) {
-      list.push([startPrdDe, `${startYear}${monthEnd}`])
+      list.push([startPrdDe, `${startYear}${strEnd}`])
     } else if (year.toString() === endYear) {
       list.push([`${endYear}01`, endPrdDe])
     } else {
-      list.push([`${year}01`, `${year}${monthEnd}`])
+      list.push([`${year}01`, `${year}${strEnd}`])
     }
   }
   return list
@@ -31,7 +30,7 @@ export async function fetchDataAndInsertByAnnual({
   startPrdDe,
   endPrdDe
 }) {
-  const indicators = kosisOptions.yearly
+  const indicators = kosisConfig.yearly
   const fn = indicators.map(option => kosis.getIndicatorData({
     ...option,
     apiKey: process.env.KOSIS_API_KEY,
@@ -55,26 +54,26 @@ export async function fetchDataAndInsertByMonthlyAndQuarterly({
   endPrdDe
 }) {
   const delayTime = 1000
-  const months = getPeriodDate({ prdSe, startPrdDe, endPrdDe })
-  const options = kosisOptions.monthly
+  const periodOptions = getPeriodDate({ prdSe, startPrdDe, endPrdDe })
+  const indicators = kosisConfig[prdSe === 'M' ? 'monthly' : 'quarterly']
   let values = []
   try {
-    for (let i = 0; i < options.length; i ++ ) {
-      const option = options[i]
-      for (let j = 0; j < months.length; j ++ ) {
-        const [startMonth, endMonth] = months[j]
+    for (let i = 0; i < indicators.length; i ++ ) {
+      const option = indicators[i]
+      for (let j = 0; j < periodOptions.length; j ++ ) {
+        const [startDate, endDate] = periodOptions[j]
         const data = await kosis.getIndicatorData({
           ...option,
           apiKey: process.env.KOSIS_API_KEY,
           prdSe,
-          startPrdDe: startMonth,
-          endPrdDe: endMonth
-        });
+          startPrdDe: startDate,
+          endPrdDe: endDate
+        })
         if (data.length) {
-          console.log(startMonth, endMonth, option, data.length)
+          console.log(startDate, endDate, option, data.length)
           values = values.concat(data)
         }
-        if (i < options.length && j < months.length) {
+        if (i < indicators.length && j < periodOptions.length) {
           await delay(delayTime);
         }
       }
@@ -137,12 +136,13 @@ const convertRow = row => ({
   c8_nm_eng: row.C8_NM_ENG,
 })
 
-export async function importData (data) {
+export async function importDataToKosis (data) {
+  if (data.CODE) throw new Error(`${data.CODE}: ${data.MESSAGE}`)
   try {
-    const row = data.filter(value => !value.err).map(convertRow)
-    if (!row.length) return data[0].errMsg
+    const rows = data.filter(value => !value.err).map(convertRow)
+    if (!rows.length) return data[0].errMsg
     return await Kosis.bulkCreate(
-      row,
+      rows,
       { validate: true }
     )
   } catch (error) {

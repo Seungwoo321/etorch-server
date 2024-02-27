@@ -1,5 +1,5 @@
 import { DataTypes, Model, InferAttributes, InferCreationAttributes } from 'sequelize'
-import { options } from '../utils'
+import { options } from '../db'
 
 export class Ecos extends Model<InferAttributes<Ecos>, InferCreationAttributes<Ecos>> {
   stat_code: string;
