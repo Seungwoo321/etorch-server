@@ -4,7 +4,7 @@ import { options } from '../db'
 export class Oecd extends Model<InferAttributes<Oecd>, InferCreationAttributes<Oecd>> {
   ref_area: string;
   ref_area_code: string;
-  value: number;
+  value: string;
   freq: string;
   measure: string;
   unit_measure: string;
@@ -24,7 +24,7 @@ Oecd.init({
     type: DataTypes.STRING(50)
   },
   value: {
-    type: DataTypes.FLOAT
+    type: DataTypes.STRING(50)
   },
   freq: {
     type: DataTypes.STRING(50)
