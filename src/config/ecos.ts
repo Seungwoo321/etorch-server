@@ -153,7 +153,6 @@ const BOK_RATE = {
   itemCode1: '0101000' 
 }
 
-
 /**
  * 분기
  */

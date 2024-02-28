@@ -1,4 +1,4 @@
-import { Ecos } from "../model";
+import { Ecos } from '../model';
 import { ecos } from 'eidl'
 import EcosConfig from '../config/ecos'
 
@@ -48,7 +48,8 @@ export async function fetchDataAndInsertByAnnualFromEcos ({
       return acc.concat(cur)
     }, [])
   } catch (error) {
-    console.log(error)
+    console.log(error.message)
+    throw error
   }
 }
 
@@ -57,16 +58,15 @@ export async function fetchDataAndInsertByDailyAndMonthlyAndQuarterlyFromEcos ({
   searchStartDate,
   searchEndDate
 }) {
-  const delayTime = 1000
-  const periodOptions = getPeriodDate({ period, searchStartDate, searchEndDate })
-  const indicators = EcosConfig[period === 'D' ? 'daily' : (period === 'M' ? 'monthly' : 'quarterly')]
-  let values = []
   try {
+    const delayTime = 1000
+    const periodOptions = getPeriodDate({ period, searchStartDate, searchEndDate })
+    const indicators = EcosConfig[period === 'D' ? 'daily' : (period === 'M' ? 'monthly' : 'quarterly')]
+    let values = []
     for (let i = 0; i < indicators.length; i ++) {
       const option = indicators[i]
       for (let j = 0; j < periodOptions.length; j ++) {
         const [startDate, endDate, endCount] = periodOptions[j]
-        console.log(startDate, endDate, endCount)
         const data = await ecos.getIndicatorData({
           ...option,
           apiKey: process.env.ECOS_API_KEY,
@@ -77,7 +77,7 @@ export async function fetchDataAndInsertByDailyAndMonthlyAndQuarterlyFromEcos ({
         })
         if (data.length) {
           console.log(startDate, endDate, option, data.length)
-          values = values.concat(data)
+          values = values.concat(data.map(value => ({ ...value, period })))
         }
         if (i < indicators.length && j < periodOptions.length) {
           await delay(delayTime);
@@ -86,7 +86,8 @@ export async function fetchDataAndInsertByDailyAndMonthlyAndQuarterlyFromEcos ({
     }
     return values
   } catch (error) {
-    console.log(error)
+    console.log(error.message)
+    throw error
   }
 }
 
@@ -104,7 +105,8 @@ const convertRow = row => ({
   unit_name: row.UNIT_NAME,
   wgt: row.WGT,
   time: row.TIME,
-  data_value: row.DATA_VALUE
+  data_value: row.DATA_VALUE,
+  period: row.period
 })
 
 export async function importDataToEcos (data) {
@@ -117,6 +119,21 @@ export async function importDataToEcos (data) {
       { validate: true }
     )
   } catch (error) {
-    console.log(error)
+    console.log(error.message)
+    throw error
   }
+}
+
+export async function countDataFromEcos (period) {
+  try {
+    const { count } = await Ecos.findAndCountAll({
+      where: {
+        period
+      }
+    })
+    if (count > 0) throw new Error(`[Warning] ecos rows: ${count}`)
+  } catch (error) {
+    console.log(error.message)
+    throw error
+  } 
 }

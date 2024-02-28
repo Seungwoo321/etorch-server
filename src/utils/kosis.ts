@@ -1,4 +1,4 @@
-import { Ecos, Kosis } from '../model'
+import { Kosis } from '../model'
 import { kosis } from 'eidl'
 import kosisConfig from '../config/kosis'
 
@@ -25,7 +25,7 @@ const getPeriodDate = ({ prdSe, startPrdDe, endPrdDe }) => {
   return list
 }
 
-export async function fetchDataAndInsertByAnnual({
+export async function fetchDataAndInsertByAnnualFromKosis({
   prdSe,
   startPrdDe,
   endPrdDe
@@ -44,11 +44,12 @@ export async function fetchDataAndInsertByAnnual({
       return acc.concat(cur)
     }, [])
   } catch (error) {
-    console.log(error)
+    console.log(error.message)
+    throw error
   }
 }
 
-export async function fetchDataAndInsertByMonthlyAndQuarterly({
+export async function fetchDataAndInsertByMonthlyAndQuarterlyFromKosis({
   prdSe,
   startPrdDe,
   endPrdDe
@@ -80,7 +81,8 @@ export async function fetchDataAndInsertByMonthlyAndQuarterly({
     }
     return values
   } catch (error) {
-    console.log(error)
+    console.log(error.message)
+    throw error
   }
 }
 
@@ -146,6 +148,21 @@ export async function importDataToKosis (data) {
       { validate: true }
     )
   } catch (error) {
-    console.log(error)
+    console.log(error.message)
+    throw error
   }
+}
+
+export async function countDataFromKosis (prdSe) {
+  try {
+    const { count } = await Kosis.findAndCountAll({
+      where: {
+        prd_se: prdSe
+      }
+    })
+    if (count > 0) throw new Error(`[Warning] kosis rows: ${count}`)
+  } catch (error) {
+    console.log(error.message)
+    throw error
+  } 
 }

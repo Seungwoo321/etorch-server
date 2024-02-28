@@ -1,8 +1,9 @@
 import { DataTypes, Model, InferAttributes, InferCreationAttributes } from 'sequelize'
 import { options } from '../db'
 
-export class OECD extends Model<InferAttributes<OECD>, InferCreationAttributes<OECD>> {
+export class Oecd extends Model<InferAttributes<Oecd>, InferCreationAttributes<Oecd>> {
   ref_area: string;
+  ref_area_code: string;
   value: number;
   freq: string;
   measure: string;
@@ -15,8 +16,11 @@ export class OECD extends Model<InferAttributes<OECD>, InferCreationAttributes<O
   time_period: string;
 }
 
-OECD.init({
+Oecd.init({
   ref_area: {
+    type: DataTypes.STRING(50)
+  },
+  ref_area_code: {
     type: DataTypes.STRING(50)
   },
   value: {
